@@ -2,6 +2,7 @@ package com.github.nsorin.njobrest;
 
 import com.github.nsorin.njobrest.web.controller.ApplicationController;
 import com.github.nsorin.njobrest.web.controller.CompanyController;
+import com.github.nsorin.njobrest.web.controller.DocumentController;
 import com.github.nsorin.njobrest.web.controller.RecruiterController;
 
 import org.junit.jupiter.api.Test;
@@ -22,11 +23,15 @@ class NjobApplicationTests {
 	@Autowired
 	private ApplicationController applicationController;
 
+	@Autowired
+	private DocumentController documentController;
+
 	@Test
 	void contextLoads() {
 		assertThat(this.companyController).isNotNull();
 		assertThat(this.recruiterController).isNotNull();
 		assertThat(this.applicationController).isNotNull();
+		assertThat(this.documentController).isNotNull();
 	}
 
 }

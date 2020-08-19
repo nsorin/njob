@@ -1,9 +1,12 @@
 package com.github.nsorin.njobrest.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -41,4 +44,9 @@ public class Application {
     @Getter
     @Setter
     private Company company;
+
+    @OneToMany(mappedBy = "application")
+    @Getter
+    @Setter
+    private List<Document> documents;
 }

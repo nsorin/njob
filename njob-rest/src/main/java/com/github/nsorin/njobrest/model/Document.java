@@ -1,18 +1,16 @@
 package com.github.nsorin.njobrest.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Company {
+public class Document {
 
     @GeneratedValue
     @Id
@@ -27,18 +25,21 @@ public class Company {
 
     @Getter
     @Setter
-    private String address;
+    @NotNull
+    private String fileName;
 
     @Getter
     @Setter
-    private String city;
+    @NotNull
+    private String fileType;
 
     @Getter
     @Setter
-    private Integer zipCode;
+    @NotNull
+    private String fileKey;
 
-    @OneToMany(mappedBy = "company")
+    @ManyToOne
     @Getter
     @Setter
-    private List<Recruiter> recruiters;
+    private Application application;
 }

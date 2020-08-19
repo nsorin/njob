@@ -52,7 +52,7 @@ public class RecruiterHttpTest extends HttpTest {
     @Test
     public void testUpdateExistingRecruiterValid() throws Exception {
         Recruiter recruiter = this.repository.save(this.createTestRecruiter());
-        recruiter.setFirstName("new name");
+        recruiter.setFirstName("newname");
         this.mvc.perform(put("/recruiters/" + recruiter.getId()).content(this.mapper.writeValueAsString(recruiter))
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
     }

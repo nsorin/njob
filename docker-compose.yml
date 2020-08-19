@@ -1,0 +1,45 @@
+version: '3.8'
+# TODO: Remove debug port mappings on underlying services (all except frontend)
+services:
+    db:
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_USER: njob
+            MYSQL_PASSWORD: test
+            MYSQL_DATABASE: njob
+        ports:
+            - 3307:3306
+        volumes:
+            - db-data:/var/lib/mysql
+        networks:
+            - njob-rest-db
+    njob-rest:
+        build:
+            context: ./njob-rest
+            dockerfile: Dockerfile
+        environment:
+            DB_HOST: db
+            DB_DATABASE: njob
+            DB_USER: njob
+            DB_PASSWORD: test
+        ports:
+            - 8080:8080
+        networks:
+            - njob-rest-db
+    njob-filesystem:
+        build:
+            context: ./njob-filesystem
+            dockerfile: Dockerfile
+        ports:
+            - 8081:8080
+        volumes:
+            - file-storage:/workspace/app/storage
+
+volumes:
+    file-storage:
+    db-data:
+
+networks:
+    njob-rest-db:

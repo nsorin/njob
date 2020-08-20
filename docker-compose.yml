@@ -11,8 +11,8 @@ services:
             MYSQL_DATABASE: njob
         ports:
             - 3307:3306
-        volumes:
-            - db-data:/var/lib/mysql
+        # volumes:
+        #     - db-data:/var/lib/mysql
         networks:
             - njob-rest-db
     njob-rest:
@@ -25,7 +25,7 @@ services:
             DB_USER: njob
             DB_PASSWORD: test
         ports:
-            - 8080:8080
+            - 8000:8080
         networks:
             - njob-rest-db
     njob-filesystem:
@@ -33,7 +33,7 @@ services:
             context: ./njob-filesystem
             dockerfile: Dockerfile
         ports:
-            - 8081:8080
+            - 8001:8080
         volumes:
             - file-storage:/workspace/app/storage
 

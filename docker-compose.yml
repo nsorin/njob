@@ -34,6 +34,12 @@ services:
             - file-storage:/workspace/app/storage
         networks:
             - entrypoint
+    njob-frontend:
+        build:
+            context: ./njob-frontend
+            dockerfile: Dockerfile
+        networks:
+            - entrypoint
     proxy:
         image: nginx:1.16.0-alpine
         ports:

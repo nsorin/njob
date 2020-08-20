@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.nsorin.njobrest.model.validation.ValidationPattern;
 
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Recruiter {
     @Pattern(regexp = ValidationPattern.PHONE_NUMBER)
     private String phone;
 
+    @JsonBackReference
     @ManyToOne
     @Getter
     @Setter

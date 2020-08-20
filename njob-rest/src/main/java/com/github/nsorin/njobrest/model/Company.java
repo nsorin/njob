@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,6 +39,13 @@ public class Company {
     @Setter
     private Integer zipCode;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "company")
+    @Getter
+    @Setter
+    private List<Application> applications;
+    
+    @JsonManagedReference
     @OneToMany(mappedBy = "company")
     @Getter
     @Setter

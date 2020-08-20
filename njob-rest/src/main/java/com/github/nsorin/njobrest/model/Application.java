@@ -11,6 +11,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,11 +43,13 @@ public class Application {
     @Max(5)
     private Integer priority;
 
+    @JsonBackReference
     @ManyToOne
     @Getter
     @Setter
     private Company company;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "application")
     @Getter
     @Setter

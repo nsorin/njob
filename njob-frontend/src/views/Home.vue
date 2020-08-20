@@ -6,13 +6,16 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import Company from '@/store/models/Company'
 
 export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  mounted() {
+    Company.api().fetch()
   }
 }
 </script>

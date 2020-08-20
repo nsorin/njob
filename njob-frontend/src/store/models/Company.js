@@ -6,6 +6,15 @@ export default class Company extends Model {
 
     static entity = 'company'
 
+    static apiConfig = {
+        actions: {
+            fetch: {
+                method: 'get',
+                url: '/companies'
+            }
+        }
+    }
+
     static fields() {
         return {
             id: this.number(null),

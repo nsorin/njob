@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Name</th>
@@ -10,12 +10,18 @@
         </tr>
       </thead>
       <tbody>
-          <tr v-for="company in companies" :key="company.id">
-            <td>{{ company.name }}</td>
-            <td>{{ company.address }}</td>
-            <td>{{ company.zipCode }}</td>
-            <td>{{ company.city }}</td>
-          </tr>
+        <router-link
+          tag="tr"
+          class="clickable"
+          v-for="company in companies"
+          :key="company.id"
+          :to="`/companies/${company.id}`"
+        >
+          <td>{{ company.name }}</td>
+          <td>{{ company.address }}</td>
+          <td>{{ company.zipCode }}</td>
+          <td>{{ company.city }}</td>
+        </router-link>
       </tbody>
     </table>
   </div>
@@ -27,12 +33,15 @@ import Company from "@/store/models/Company";
 export default {
   name: "company-list",
   computed: {
-      companies() {
-          return Company.all()
-      }
-  }
+    companies() {
+      return Company.all();
+    },
+  },
 };
 </script>
 
 <style scoped>
+tr.clickable:hover {
+  cursor: pointer;
+}
 </style>

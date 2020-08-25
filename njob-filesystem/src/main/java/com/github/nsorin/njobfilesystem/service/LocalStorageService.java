@@ -23,16 +23,27 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Service
 public class LocalStorageService implements StorageService {
 
+    /**
+     * Location of the local storage on the disk.
+     */
     private final Path rootLocation;
 
+    /**
+     * Constructor used to retrieve the location of the local storage.
+     * @param properties
+     */
     @Autowired
     public LocalStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
     }
 
+    /**
+     * Initialize the storage by creating its directory if it does not exist.
+     */
     @Override
     @PostConstruct
     public void init() {

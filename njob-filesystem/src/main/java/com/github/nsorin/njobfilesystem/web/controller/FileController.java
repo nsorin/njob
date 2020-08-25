@@ -29,6 +29,12 @@ public class FileController {
     @Autowired
     StorageService storage;
 
+    /**
+     * Endpoint to download a file on the storage. Returns 404 if the file does not exist.
+     * @param fileKey
+     * @return
+     * @throws FileNotFoundException
+     */
     @GetMapping("/{fileKey}")
     @ResponseBody
     public ResponseEntity<Resource> download(@PathVariable String fileKey) throws FileNotFoundException {
@@ -40,6 +46,12 @@ public class FileController {
                 .body(resource);
     }
 
+    /**
+     * Endpoint to upload a file. Returns 400 if the file is invalid.
+     * @param file
+     * @return
+     * @throws InvalidFileException
+     */
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -51,6 +63,11 @@ public class FileController {
         return new FileResponse(fileKey, uri, file.getContentType(), file.getSize());
     }
 
+    /**
+     * Endpoint to delete a file. Returns 404 if the file does not exist.
+     * @param fileKey
+     * @throws FileNotFoundException
+     */
     @DeleteMapping("/{fileKey}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String fileKey) throws FileNotFoundException {

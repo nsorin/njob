@@ -1,5 +1,6 @@
 package com.github.nsorin.njobfilesystem.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -81,6 +82,13 @@ public class LocalStorageService implements StorageService {
             Files.delete(file);
         } catch (IOException e) {
             throw new FileNotFoundException();
+        }
+    }
+
+    @Override
+    public void clear() {
+        for (File file: this.rootLocation.toFile().listFiles()) {
+            file.delete();
         }
     }
 

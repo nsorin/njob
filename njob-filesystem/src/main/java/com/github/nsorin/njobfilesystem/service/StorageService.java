@@ -15,4 +15,6 @@ public interface StorageService {
     public Resource load(String fileKey) throws FileNotFoundException;
 
     public void delete(String fileKey) throws FileNotFoundException;
+
+    public void clear();
 }

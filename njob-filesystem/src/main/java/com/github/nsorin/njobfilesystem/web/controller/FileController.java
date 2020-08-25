@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,7 +40,8 @@ public class FileController {
                 .body(resource);
     }
 
-    @PutMapping("")
+    @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public FileResponse upload(@RequestParam("file") MultipartFile file) throws InvalidFileException {
         String fileKey = this.storage.store(file);

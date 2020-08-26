@@ -46,12 +46,9 @@ public class RecruiterController {
     @PutMapping("/{id}")
     public Recruiter update(@PathVariable Integer id, @RequestBody @Valid Recruiter newRecruiter)
             throws EntityNotFoundException {
-        Recruiter recruiter = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
-        recruiter.setFirstName(newRecruiter.getFirstName());
-        recruiter.setLastName(newRecruiter.getLastName());
-        recruiter.setEmail(newRecruiter.getEmail());
-        recruiter.setPhone(newRecruiter.getPhone());
-        return this.repository.save(recruiter);
+        this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        newRecruiter.setId(id);
+        return this.repository.save(newRecruiter);
     }
 
     @DeleteMapping("/{id}")

@@ -46,12 +46,9 @@ public class CompanyController {
     @PutMapping("/{id}")
     public Company update(@PathVariable Integer id, @RequestBody @Valid Company newCompany)
             throws EntityNotFoundException {
-        Company company = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
-        company.setName(newCompany.getName());
-        company.setAddress(newCompany.getAddress());
-        company.setCity(newCompany.getCity());
-        company.setZipCode(newCompany.getZipCode());
-        return this.repository.save(company);
+        this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        newCompany.setId(id);
+        return this.repository.save(newCompany);
     }
 
     @DeleteMapping("/{id}")

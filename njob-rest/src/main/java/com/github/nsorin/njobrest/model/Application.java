@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.hibernate.validator.constraints.URL;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,6 +44,11 @@ public class Application {
     @Min(1)
     @Max(5)
     private Integer priority;
+
+    @Getter
+    @Setter
+    @URL
+    private String offer;
 
     @JsonBackReference
     @ManyToOne

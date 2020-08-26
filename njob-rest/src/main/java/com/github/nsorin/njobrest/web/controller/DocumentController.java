@@ -46,12 +46,9 @@ public class DocumentController {
     @PutMapping("/{id}")
     public Document update(@PathVariable Integer id, @RequestBody @Valid Document newDocument)
             throws EntityNotFoundException {
-        Document document = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
-        document.setName(newDocument.getName());
-        document.setFileName(newDocument.getFileName());
-        document.setFileType(newDocument.getFileType());
-        document.setFileKey(newDocument.getFileKey());
-        return this.repository.save(document);
+        this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        newDocument.setId(id);
+        return this.repository.save(newDocument);
     }
 
     @DeleteMapping("/{id}")

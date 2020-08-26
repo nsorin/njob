@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.hibernate.validator.constraints.URL;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,6 +40,11 @@ public class Company {
     @Getter
     @Setter
     private Integer zipCode;
+
+    @Getter
+    @Setter
+    @URL
+    private String webSite;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "company")

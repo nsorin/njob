@@ -46,11 +46,9 @@ public class ApplicationController {
     @PutMapping("/{id}")
     public Application update(@PathVariable Integer id, @RequestBody @Valid Application newApplication)
             throws EntityNotFoundException {
-        Application application = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
-        application.setName(newApplication.getName());
-        application.setDescription(newApplication.getDescription());
-        application.setPriority(newApplication.getPriority());
-        return this.repository.save(application);
+        this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        newApplication.setId(id);
+        return this.repository.save(newApplication);
     }
 
     @DeleteMapping("/{id}")

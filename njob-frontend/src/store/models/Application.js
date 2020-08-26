@@ -12,6 +12,7 @@ export default class Application extends Model {
             name: this.string(''),
             description: this.string(''),
             priority: this.number(1),
+            offer: this.string(''),
             company_id: this.number(null),
             company: this.belongsTo(Company, 'company_id'),
             documents: this.hasMany(Document, 'application_id')

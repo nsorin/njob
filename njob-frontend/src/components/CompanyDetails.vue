@@ -2,6 +2,9 @@
   <div class="card" v-if="company">
     <h5 class="card-header">{{ company.name }}</h5>
     <div class="card-body">
+      <p class="card-text" v-if="company.webSite">
+        <a :href="company.webSite">{{ company.webSite }}</a>
+      </p>
       <p class="card-text">
         {{ company.address }}
         <br />

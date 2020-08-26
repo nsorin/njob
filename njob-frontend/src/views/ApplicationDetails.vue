@@ -13,6 +13,9 @@
         </span>
       </p>
       <p class="card-text">{{ application.description }}</p>
+      <p class="card-text" v-if="application.offer">
+        <a :href="application.offer">See offer</a>
+      </p>
     </div>
     <div class="card-header">Documents</div>
     <document-list v-if="application.documents.length > 0" :documents="application.documents"></document-list>

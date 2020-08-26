@@ -22,6 +22,7 @@ export default class Company extends Model {
             address: this.string(''),
             city: this.string(''),
             zipCode: this.number(null),
+            webSite: this.string(''),
             applications: this.hasMany(Application, 'company_id'),
             recruiters: this.hasMany(Recruiter, 'company_id')
         }

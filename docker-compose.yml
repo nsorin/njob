@@ -34,6 +34,12 @@ services:
             - file-storage:/workspace/app/storage
         networks:
             - entrypoint
+    njob-pdf:
+        build:
+            context: ./njob-pdf
+            dockerfile: Dockerfile
+        networks:
+            - entrypoint
     njob-frontend:
         build:
             context: ./njob-frontend

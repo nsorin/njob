@@ -11,7 +11,7 @@
 	<groupId>com.github.nsorin</groupId>
 	<artifactId>njob-pdf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>njob-pdf</name>
 	<description>Demo project for Spring Boot</description>
 

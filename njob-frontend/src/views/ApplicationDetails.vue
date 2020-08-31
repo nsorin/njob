@@ -28,7 +28,7 @@
 <script>
 import Application from "../store/models/Application";
 import { BIconStarFill, BIconStar } from "bootstrap-vue";
-import DocumentList from "../components/DocumentList"
+import DocumentList from "../components/DocumentList";
 
 const MAX_STARS = 5;
 

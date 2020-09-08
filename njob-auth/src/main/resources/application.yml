@@ -1,0 +1,8 @@
+
+security:
+  jwt:
+    key-store: classpath:mykeystore.jks
+    key-store-password: nicolas
+    key-pair-alias: servercert
+    key-pair-password: nicolas
+

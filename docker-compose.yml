@@ -40,6 +40,12 @@ services:
             dockerfile: Dockerfile
         networks:
             - entrypoint
+    njob-auth:
+        build:
+            context: ./njob-auth
+            dockerfile: Dockerfile
+        networks:
+            - entrypoint
     njob-frontend:
         build:
             context: ./njob-frontend

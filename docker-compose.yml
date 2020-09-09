@@ -21,6 +21,7 @@ services:
             DB_DATABASE: njob
             DB_USER: njob
             DB_PASSWORD: test
+            AUTH_HOST: njob-auth
         networks:
             - njob-rest-db
             - entrypoint
